@@ -38,29 +38,71 @@ body {
 }
 
 /* HERO */
-.hero {
-  height: 90vh;
-  background: linear-gradient(135deg, #6c63ff, #4b47c4);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* =========================
+   HERO ANIMATION (WI STYLE)
+   ========================= */
+
+.hero-title {
+  font-size: 2.6rem;
+  margin-top: 15px;
+  animation: heroSlide 1.2s ease forwards;
 }
 
-.hero span {
-  color: #ffd369;
+.hero-subtitle {
+  opacity: 0;
+  margin-top: 10px;
+  animation: heroFade 1.5s ease forwards;
+  animation-delay: 0.8s;
 }
 
-.profile-pic {
-  width: 150px;
-  height: 150px;
+/* Floating background circles */
+.float-circle {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #fff;
-  margin-bottom: 20px;
+  animation: floatMove 6s ease-in-out infinite;
 }
+
+.float-circle.one {
+  top: 18%;
+  left: 10%;
+}
+
+.float-circle.two {
+  bottom: 20%;
+  right: 12%;
+  animation-delay: 2s;
+}
+
+/* Keyframes */
+@keyframes heroSlide {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatMove {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
 
 /* SECTIONS */
 .section {
@@ -124,3 +166,4 @@ body.dark .cert-card,
 body.dark .project {
   background: #1e1e1e;
 }
+
