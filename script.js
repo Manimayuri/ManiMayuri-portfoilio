@@ -2,14 +2,17 @@ function toggleTheme() {
   document.body.classList.toggle("dark");
 }
 
-const cards = document.querySelectorAll(".skill-card, .cert-card");
+/* Reveal animation for certifications */
+const certCards = document.querySelectorAll(".cert-card");
 
-window.addEventListener("scroll", () => {
-  cards.forEach(card => {
-    if (card.getBoundingClientRect().top < window.innerHeight - 100) {
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-      card.style.transition = "0.6s ease";
+function revealCertifications() {
+  certCards.forEach(card => {
+    const position = card.getBoundingClientRect().top;
+    if (position < window.innerHeight - 100) {
+      card.classList.add("show");
     }
   });
-});
+}
+
+window.addEventListener("scroll", revealCertifications);
+window.addEventListener("load", revealCertifications);
